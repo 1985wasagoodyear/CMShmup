@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		3F766556225BAD5A0049438C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F766555225BAD5A0049438C /* AppDelegate.swift */; };
-		3F766558225BAD5A0049438C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F766557225BAD5A0049438C /* ViewController.swift */; };
+		3F766558225BAD5A0049438C /* FlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F766557225BAD5A0049438C /* FlightViewController.swift */; };
 		3F76655B225BAD5A0049438C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F766559225BAD5A0049438C /* Main.storyboard */; };
 		3F76655D225BAD5B0049438C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F76655C225BAD5B0049438C /* Assets.xcassets */; };
 		3F766560225BAD5B0049438C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F76655E225BAD5B0049438C /* LaunchScreen.storyboard */; };
+		3F76656E225BB2790049438C /* PlaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76656D225BB2790049438C /* PlaneView.swift */; };
+		3F766571225BB30A0049438C /* FileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F766570225BB30A0049438C /* FileName.swift */; };
+		3F766574225BB3B90049438C /* ErrorThrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F766573225BB3B90049438C /* ErrorThrow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3F766552225BAD5A0049438C /* CMShmup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CMShmup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F766555225BAD5A0049438C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3F766557225BAD5A0049438C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3F766557225BAD5A0049438C /* FlightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightViewController.swift; sourceTree = "<group>"; };
 		3F76655A225BAD5A0049438C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F76655C225BAD5B0049438C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F76655F225BAD5B0049438C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F766561225BAD5B0049438C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F76656D225BB2790049438C /* PlaneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneView.swift; sourceTree = "<group>"; };
+		3F766570225BB30A0049438C /* FileName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileName.swift; sourceTree = "<group>"; };
+		3F766573225BB3B90049438C /* ErrorThrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorThrow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,65 @@
 		3F766554225BAD5A0049438C /* CMShmup */ = {
 			isa = PBXGroup;
 			children = (
+				3F766575225BC8EF0049438C /* New Group */,
+				3F766572225BB3AB0049438C /* Errors */,
+				3F76656F225BB2FF0049438C /* Constants */,
+				3F76656C225BB2650049438C /* View */,
+				3F76656B225BB2510049438C /* Service */,
+				3F76656A225BB2470049438C /* ViewControllers */,
 				3F766555225BAD5A0049438C /* AppDelegate.swift */,
-				3F766557225BAD5A0049438C /* ViewController.swift */,
 				3F766559225BAD5A0049438C /* Main.storyboard */,
 				3F76655C225BAD5B0049438C /* Assets.xcassets */,
 				3F76655E225BAD5B0049438C /* LaunchScreen.storyboard */,
 				3F766561225BAD5B0049438C /* Info.plist */,
 			);
 			path = CMShmup;
+			sourceTree = "<group>";
+		};
+		3F76656A225BB2470049438C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3F766557225BAD5A0049438C /* FlightViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3F76656B225BB2510049438C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		3F76656C225BB2650049438C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3F76656D225BB2790049438C /* PlaneView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3F76656F225BB2FF0049438C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				3F766570225BB30A0049438C /* FileName.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		3F766572225BB3AB0049438C /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				3F766573225BB3B90049438C /* ErrorThrow.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		3F766575225BC8EF0049438C /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +192,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F766558225BAD5A0049438C /* ViewController.swift in Sources */,
+				3F766558225BAD5A0049438C /* FlightViewController.swift in Sources */,
+				3F76656E225BB2790049438C /* PlaneView.swift in Sources */,
+				3F766571225BB30A0049438C /* FileName.swift in Sources */,
+				3F766574225BB3B90049438C /* ErrorThrow.swift in Sources */,
 				3F766556225BAD5A0049438C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
