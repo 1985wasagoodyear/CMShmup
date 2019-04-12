@@ -54,7 +54,8 @@ final class PlaneView: UIView {
         // set up rest of view
         backgroundColor = .clear
         translatesAutoresizingMaskIntoConstraints = false
-        autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
+        autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin,
+                            .flexibleTopMargin, .flexibleBottomMargin]
     }
 
 }

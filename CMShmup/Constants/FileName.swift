@@ -10,6 +10,7 @@ import UIKit
 
 enum FileName: String {
     case plane = "SuperHornet"
+    case bullet = "bullet"
 }
 
 extension UIImage {

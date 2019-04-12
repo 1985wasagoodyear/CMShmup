@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F48B422225F873100D5A3AD /* GlobalParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F48B421225F873100D5A3AD /* GlobalParams.swift */; };
+		3F48B424225F87B000D5A3AD /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F48B423225F87B000D5A3AD /* Utility.swift */; };
+		3F6A7D292260EBBA00B3166A /* MovementBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6A7D282260EBBA00B3166A /* MovementBounds.swift */; };
+		3F70E427225BE4A800BF15E5 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F70E426225BE4A800BF15E5 /* MotionManager.swift */; };
 		3F766556225BAD5A0049438C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F766555225BAD5A0049438C /* AppDelegate.swift */; };
 		3F766558225BAD5A0049438C /* FlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F766557225BAD5A0049438C /* FlightViewController.swift */; };
 		3F76655B225BAD5A0049438C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F766559225BAD5A0049438C /* Main.storyboard */; };
@@ -18,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F48B421225F873100D5A3AD /* GlobalParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalParams.swift; sourceTree = "<group>"; };
+		3F48B423225F87B000D5A3AD /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		3F6A7D282260EBBA00B3166A /* MovementBounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementBounds.swift; sourceTree = "<group>"; };
+		3F70E426225BE4A800BF15E5 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 		3F766552225BAD5A0049438C /* CMShmup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CMShmup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F766555225BAD5A0049438C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F766557225BAD5A0049438C /* FlightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightViewController.swift; sourceTree = "<group>"; };
@@ -60,11 +68,11 @@
 		3F766554225BAD5A0049438C /* CMShmup */ = {
 			isa = PBXGroup;
 			children = (
-				3F766575225BC8EF0049438C /* New Group */,
+				3F766575225BC8EF0049438C /* Model */,
 				3F766572225BB3AB0049438C /* Errors */,
 				3F76656F225BB2FF0049438C /* Constants */,
 				3F76656C225BB2650049438C /* View */,
-				3F76656B225BB2510049438C /* Service */,
+				3F76656B225BB2510049438C /* Manager */,
 				3F76656A225BB2470049438C /* ViewControllers */,
 				3F766555225BAD5A0049438C /* AppDelegate.swift */,
 				3F766559225BAD5A0049438C /* Main.storyboard */,
@@ -83,11 +91,12 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		3F76656B225BB2510049438C /* Service */ = {
+		3F76656B225BB2510049438C /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				3F70E426225BE4A800BF15E5 /* MotionManager.swift */,
 			);
-			path = Service;
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		3F76656C225BB2650049438C /* View */ = {
@@ -102,6 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				3F766570225BB30A0049438C /* FileName.swift */,
+				3F48B421225F873100D5A3AD /* GlobalParams.swift */,
+				3F48B423225F87B000D5A3AD /* Utility.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -114,11 +125,12 @@
 			path = Errors;
 			sourceTree = "<group>";
 		};
-		3F766575225BC8EF0049438C /* New Group */ = {
+		3F766575225BC8EF0049438C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3F6A7D282260EBBA00B3166A /* MovementBounds.swift */,
 			);
-			path = "New Group";
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,10 +205,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F766558225BAD5A0049438C /* FlightViewController.swift in Sources */,
+				3F70E427225BE4A800BF15E5 /* MotionManager.swift in Sources */,
 				3F76656E225BB2790049438C /* PlaneView.swift in Sources */,
 				3F766571225BB30A0049438C /* FileName.swift in Sources */,
+				3F48B424225F87B000D5A3AD /* Utility.swift in Sources */,
+				3F48B422225F873100D5A3AD /* GlobalParams.swift in Sources */,
 				3F766574225BB3B90049438C /* ErrorThrow.swift in Sources */,
 				3F766556225BAD5A0049438C /* AppDelegate.swift in Sources */,
+				3F6A7D292260EBBA00B3166A /* MovementBounds.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,7 +359,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SY7RWQB994;
 				INFOPLIST_FILE = CMShmup/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -360,7 +378,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SY7RWQB994;
 				INFOPLIST_FILE = CMShmup/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
