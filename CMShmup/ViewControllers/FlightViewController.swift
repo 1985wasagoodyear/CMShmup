@@ -14,42 +14,54 @@ class FlightViewController: UIViewController {
     // MARK: - View Properties
     
     var planeView: PlaneView!
-    var startButton: UIButton!
+    lazy var startButton: UIButton = {
+        let btn = UIButton(frame: CGRect(x: 0.0, y: 0.0,
+                                             width: 300.0, height: 100.0))
+        btn.setTitle("START", for: .normal)
+        btn.setTitleColor(btn.tintColor, for: .normal)
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(btn)
+        let buttonConstraints = [
+            btn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            btn.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ]
+        NSLayoutConstraint.activate(buttonConstraints)
+        return btn
+    }()
     
     // MARK: - Movement & Location Properties
+    
     var motion: MotionManager!
     var initialPos: PivotValue!
-    var maxBounds: MovementBounds!
+    var fire: Timer!
+    
+    lazy var maxBounds: MovementBounds = {
+        let escapeArea = GlobalParams.relativeMaxEscapeArea
+        let viewSize = view.frame.size
+        let planeSize = planeView.frame.size
+        return MovementBounds(minX: 0,
+                              maxX: viewSize.width,
+                              minY: 0,
+                              maxY: viewSize.height)
+        /*
+        return MovementBounds(minX: -(planeSize.width * escapeArea),
+                              maxX: viewSize.width + (planeSize.width * escapeArea),
+                              minY: -(planeSize.height * escapeArea),
+                              maxY: viewSize.height + (planeSize.height * escapeArea))*/
+    }()
     
     // MARK: - Lifecycle Methods
     
     override func loadView() {
         super.loadView()
         
-        planeView = PlaneView()
-        planeView.isHidden = true
-        view.addSubview(planeView)
-        
-        view.backgroundColor = .white
+        setupPlaneView()
+        setupStartButton()
         
         // todo: setup background
         //
         //
-        
-        startButton = UIButton(frame: CGRect(x: 0.0, y: 0.0,
-                                             width: 300.0, height: 100.0))
-        startButton.setTitle("START", for: .normal)
-        startButton.setTitleColor(startButton.tintColor, for: .normal)
-        startButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(startButton)
-        let buttonConstraints = [
-            startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            startButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ]
-        NSLayoutConstraint.activate(buttonConstraints)
-        startButton.addTarget(self,
-                              action: #selector(startButtonAction),
-                              for: .touchUpInside)
+        view.backgroundColor = .white
     }
     
     override func viewDidLoad() {
@@ -88,23 +100,32 @@ extension FlightViewController {
         showPlane()
     }
     
+    private func setupPlaneView() {
+        planeView = PlaneView()
+        planeView.isHidden = true
+        view.addSubview(planeView)
+    }
+    
+    private func setupStartButton() {
+        startButton.addTarget(self,
+                              action: #selector(startButtonAction),
+                              for: .touchUpInside)
+    }
+    
     private func setupMotion() {
         MotionManager.getInitialPos({ (first) in
             self.initialPos = first
-            self.motion = MotionManager({ (pivot) in
+            self.motion = MotionManager(interval: GlobalParams.updateInterval) { (pivot) in
                 // print("x: \(pivot.horizontal) y: \(pivot.vertical)")
                 self.movePlane(with: pivot)
-            })
+            }
         })
+    
     }
     
     private func showPlane() {
         planeView.center.x = view.center.x
         planeView.center.y = view.frame.height * GlobalParams.relativeStartingPos
-        maxBounds = MovementBounds(minX: (-planeView.frame.size.width / 2.0) * GlobalParams.relativeMaxEscapeArea,
-                                   maxX: (view.frame.size.width + (planeView.frame.size.width / 2.0)) * GlobalParams.relativeMaxEscapeArea,
-                                   minY: (-planeView.frame.size.width / 2.0) * GlobalParams.relativeMaxEscapeArea,
-                                   maxY: (view.frame.size.width + (planeView.frame.size.width / 2.0)) * GlobalParams.relativeMaxEscapeArea)
         planeView.isHidden = false
         UIView.animate(withDuration: GlobalParams.entrySpeed, animations: {
             self.planeView.center = self.view.center
@@ -121,12 +142,24 @@ extension FlightViewController {
 extension FlightViewController {
     
     private func startFiring() {
-        // todo
-    }
-    private func stopFiring() {
-        // todo
+        fire = Timer.scheduledTimer(withTimeInterval: 1.0,
+                                    repeats: true,
+                                    block: { (_) in
+            print("boom")
+        })
     }
     
+    private func stopFiring() {
+        fire.invalidate()
+        fire = nil
+    }
+    
+    // pivot - in pi-radians
+    // should check if it fits within -pi...pi, where 0 is straight-up
+    // TODO - ensure it fits within the range
+    //        if it does, normalize it within range
+    //        if not, bound to maximum range
+    // need to determine max-tolerable angles to tilt, doesn't always fit in -pi...pi
     private func movePlane(with pivot: PivotValue) {
         let center = planeView.center
         
@@ -138,7 +171,7 @@ extension FlightViewController {
         else if newXPos < maxBounds.minX {
             newXPos = maxBounds.minX
         }
-        else if newYPos > maxBounds.maxY {
+        if newYPos > maxBounds.maxY {
             newYPos = maxBounds.maxY
         }
         else if newYPos < maxBounds.minY {
@@ -148,4 +181,5 @@ extension FlightViewController {
         self.planeView.center.x = newXPos
         self.planeView.center.y = newYPos
     }
+    
 }

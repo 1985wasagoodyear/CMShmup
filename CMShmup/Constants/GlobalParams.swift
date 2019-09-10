@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct GlobalParams {
-    private init() { }
-    static var movement: Double = 10.0
+enum GlobalParams {
+    static var movement: Double = 20.0
     static var relativeStartingPos: Double = 1.5
     static let entrySpeed: Double = 1.5
     static let relativeMaxEscapeArea: Double = 0.5
+    static let updateInterval: TimeInterval = 1.0/30.0
 }

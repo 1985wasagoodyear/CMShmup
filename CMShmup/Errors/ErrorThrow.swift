@@ -8,9 +8,7 @@
 
 import Foundation
 
-struct ErrorThrow {
-    private init() { }
-    
+enum ErrorThrow {
     static func fatalFileMissing(_ fileName: String) -> String {
         return "Fatal: File \(fileName) could not be found!"
     }

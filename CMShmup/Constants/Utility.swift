@@ -15,4 +15,10 @@ extension CGFloat {
     static func *(left: CGFloat, right: Double) -> CGFloat {
         return left * CGFloat(right)
     }
+    var half: CGFloat {
+        return self / 2.0
+    }
+    var double: CGFloat {
+        return self * 2.0
+    }
 }
